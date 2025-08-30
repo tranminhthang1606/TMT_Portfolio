@@ -36,7 +36,7 @@ export default function Projects() {
       opacity: 1,
       transition: {
         duration: 0.8,
-        ease: "easeOut"
+        ease: "easeOut" as const
       }
     }
   };
@@ -223,7 +223,7 @@ export default function Projects() {
               Interested in working together?
             </h3>
             <p className="text-white/80 mb-6">
-              Let's discuss your project and see how I can help bring your ideas to life.
+              Let&apos;s discuss your project and see how I can help bring your ideas to life.
             </p>
             <a
               href="#contact"

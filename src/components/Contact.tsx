@@ -42,7 +42,7 @@ export default function Contact() {
             Get In Touch
           </h2>
           <p className="text-xl text-white/80 max-w-3xl mx-auto">
-            Let's discuss your project and see how I can help bring your ideas to life
+            Let&apos;s discuss your project and see how I can help bring your ideas to life
           </p>
         </motion.div>
 

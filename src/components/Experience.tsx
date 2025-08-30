@@ -3,7 +3,7 @@
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { experiences } from '@/data/portfolio';
-import { Calendar, MapPin, Building, Code } from 'lucide-react';
+import { Building, Code } from 'lucide-react';
 
 export default function Experience() {
   const { ref, inView } = useInView({
@@ -28,7 +28,7 @@ export default function Experience() {
       opacity: 1,
       transition: {
         duration: 0.8,
-        ease: "easeOut"
+        ease: "easeOut" as const
       }
     }
   };

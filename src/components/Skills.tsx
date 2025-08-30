@@ -35,7 +35,7 @@ export default function Skills() {
       opacity: 1,
       transition: {
         duration: 0.6,
-        ease: "easeOut"
+        ease: "easeOut" as const
       }
     }
   };
@@ -44,11 +44,11 @@ export default function Skills() {
     hidden: { width: 0 },
     visible: (level: number) => ({
       width: `${level}%`,
-      transition: {
-        duration: 1.5,
-        ease: "easeOut",
-        delay: 0.3
-      }
+              transition: {
+          duration: 1.5,
+          ease: "easeOut" as const,
+          delay: 0.3
+        }
     })
   };
 
@@ -99,7 +99,7 @@ export default function Skills() {
           animate={inView ? "visible" : "hidden"}
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
         >
-          {filteredSkills.map((skill, index) => (
+          {filteredSkills.map((skill) => (
             <motion.div
               key={skill.name}
               variants={skillVariants}
