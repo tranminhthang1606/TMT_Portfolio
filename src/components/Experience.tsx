@@ -101,23 +101,25 @@ export default function Experience() {
                       {experience.description}
                     </p>
 
-                    {/* Technologies */}
-                    <div className="mb-6">
-                      <h5 className="text-sm font-semibold text-purple-300 mb-3 flex items-center gap-2">
-                        <Code className="w-4 h-4" />
-                        Technologies Used
-                      </h5>
-                      <div className="flex flex-wrap gap-2">
-                        {experience.technologies.map((tech) => (
-                          <span
-                            key={tech}
-                            className="px-3 py-1 bg-white/10 backdrop-blur-sm rounded-full text-xs text-white/80 border border-white/20"
-                          >
-                            {tech}
-                          </span>
-                        ))}
+                    {/* Technologies - Only show if no projects */}
+                    {(!experience.projects || experience.projects.length === 0) && (
+                      <div className="mb-6">
+                        <h5 className="text-sm font-semibold text-purple-300 mb-3 flex items-center gap-2">
+                          <Code className="w-4 h-4" />
+                          Technologies Used
+                        </h5>
+                        <div className="flex flex-wrap gap-2">
+                          {experience.technologies.map((tech) => (
+                            <span
+                              key={tech}
+                              className="px-3 py-1 bg-white/10 backdrop-blur-sm rounded-full text-xs text-white/80 border border-white/20"
+                            >
+                              {tech}
+                            </span>
+                          ))}
+                        </div>
                       </div>
-                    </div>
+                    )}
 
                     {/* Projects */}
                     {experience.projects && experience.projects.length > 0 && (
@@ -142,12 +144,28 @@ export default function Experience() {
                               <p className="text-sm text-white/70 mb-2">
                                 {project.description}
                               </p>
-                              <div className="flex items-center gap-4 text-xs text-white/60">
+                              <div className="flex items-center gap-4 text-xs text-white/60 mb-3">
                                 {project.teamSize && (
                                   <span>Team: {project.teamSize} members</span>
                                 )}
                                 <span>Role: {project.role}</span>
                               </div>
+                              
+                              {/* Project Technologies */}
+                              <div className="mb-3">
+                                <div className="flex flex-wrap gap-1">
+                                  {project.technologies.map((tech) => (
+                                    <span
+                                      key={tech}
+                                      className="px-2 py-1 bg-purple-500/20 backdrop-blur-sm rounded text-xs text-purple-300 border border-purple-500/30"
+                                    >
+                                      {tech}
+                                    </span>
+                                  ))}
+                                </div>
+                              </div>
+                              
+
                             </div>
                           ))}
                         </div>

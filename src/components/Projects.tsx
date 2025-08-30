@@ -180,6 +180,8 @@ export default function Projects() {
                     </div>
                   </div>
 
+
+
                   {/* Action Buttons */}
                   <div className="flex gap-3 mt-6">
                     {project.live && (
