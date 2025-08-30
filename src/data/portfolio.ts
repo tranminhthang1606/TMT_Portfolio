@@ -202,12 +202,13 @@ export const projects: Project[] = [
   {
     id: "heartfield",
     title: "HEARTFIELD",
-    description: "Built an internal corporate social network system similar to Facebook. It includes functions for users to update their personal page, post, comment, react to posts, upload stories, send messages, and video calls. It supports switching between 3 languages: Vietnamese, English, and Korean.",
-    technologies: ["NuxtJS", "Tailwind CSS", "NextJS", "Axios", "WebSocket", "Stringee"],
+    description: "Store system management similar to Shopee, the project includes system administration and store administration.",
+    technologies: ["TypeScript", "NextJS", "Tailwind CSS", "Zustand"],
     image: "/projects/heartfield.jpg",
     live: "https://shop.heartfield.co.kr/",
-    teamSize: 6,
-    role: "Main Dev - Directly involved in the development and maintenance of user profile functionality with NuxtJS and the development of admin management with NextJS.",
+    github: "https://admin.heartfield.co.kr/",
+    teamSize: 8,
+    role: "Support feature maintenance and development.",
     period: "07/2024 - 08/2024",
     category: "web"
   }
