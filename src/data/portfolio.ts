@@ -1,6 +1,5 @@
 export interface Skill {
   name: string;
-  level: number;
   category: string;
   icon?: string;
 }
@@ -13,10 +12,12 @@ export interface Project {
   image: string;
   github?: string;
   live?: string;
+  admin?: string;
   teamSize?: number;
   role?: string;
   period: string;
   category: 'web' | 'mobile' | 'fullstack';
+  skills?: string[];
 }
 
 export interface Experience {
@@ -61,49 +62,49 @@ export const personalInfo = {
 
 export const skills: Skill[] = [
   // Programming Languages
-  { name: "JavaScript", level: 95, category: "Programming Languages" },
-  { name: "TypeScript", level: 90, category: "Programming Languages" },
-  { name: "PHP", level: 85, category: "Programming Languages" },
-  { name: "Java", level: 75, category: "Programming Languages" },
-  { name: "Dart", level: 80, category: "Programming Languages" },
+  { name: "JavaScript", category: "Programming Languages" },
+  { name: "TypeScript", category: "Programming Languages" },
+  { name: "PHP", category: "Programming Languages" },
+  { name: "Java", category: "Programming Languages" },
+  { name: "Dart", category: "Programming Languages" },
 
   // Frameworks
-  { name: "ReactJS", level: 95, category: "Frameworks" },
-  { name: "NextJS", level: 90, category: "Frameworks" },
-  { name: "VueJS", level: 85, category: "Frameworks" },
-  { name: "NuxtJS", level: 80, category: "Frameworks" },
-  { name: "Laravel", level: 85, category: "Frameworks" },
-  { name: "Flutter", level: 80, category: "Frameworks" },
-  { name: "React Native", level: 75, category: "Frameworks" },
-  { name: "NestJS", level: 70, category: "Frameworks" },
+  { name: "ReactJS", category: "Frameworks" },
+  { name: "NextJS", category: "Frameworks" },
+  { name: "VueJS", category: "Frameworks" },
+  { name: "NuxtJS", category: "Frameworks" },
+  { name: "Laravel", category: "Frameworks" },
+  { name: "Flutter", category: "Frameworks" },
+  { name: "React Native", category: "Frameworks" },
+  { name: "NestJS", category: "Frameworks" },
 
   // Libraries & Tools
-  { name: "Tailwind CSS", level: 90, category: "Libraries & Tools" },
-  { name: "Bootstrap 5", level: 85, category: "Libraries & Tools" },
-  { name: "Ant Design", level: 80, category: "Libraries & Tools" },
-  { name: "Zustand", level: 85, category: "Libraries & Tools" },
-  { name: "Pinia", level: 80, category: "Libraries & Tools" },
-  { name: "GSAP", level: 75, category: "Libraries & Tools" },
-  { name: "InertiaJS", level: 80, category: "Libraries & Tools" },
+  { name: "Tailwind CSS", category: "Libraries & Tools" },
+  { name: "Bootstrap 5", category: "Libraries & Tools" },
+  { name: "Ant Design", category: "Libraries & Tools" },
+  { name: "Zustand", category: "Libraries & Tools" },
+  { name: "Pinia", category: "Libraries & Tools" },
+  { name: "GSAP", category: "Libraries & Tools" },
+  { name: "InertiaJS", category: "Libraries & Tools" },
 
   // DevOps & Tools
-  { name: "Docker", level: 75, category: "DevOps & Tools" },
-  { name: "Git", level: 90, category: "DevOps & Tools" },
-  { name: "Ubuntu", level: 80, category: "DevOps & Tools" },
-  { name: "Jenkins", level: 70, category: "DevOps & Tools" },
-  { name: "GitLab CI/CD", level: 75, category: "DevOps & Tools" },
+  { name: "Docker", category: "DevOps & Tools" },
+  { name: "Git", category: "DevOps & Tools" },
+  { name: "Ubuntu", category: "DevOps & Tools" },
+  { name: "Jenkins", category: "DevOps & Tools" },
+  { name: "GitLab CI/CD", category: "DevOps & Tools" },
 
   // Database
-  { name: "MySQL", level: 85, category: "Database" },
-  { name: "Firebase", level: 80, category: "Database" },
+  { name: "MySQL", category: "Database" },
+  { name: "Firebase", category: "Database" },
 
   // Others
-  { name: "RESTful API", level: 90, category: "Others" },
-  { name: "UI/UX", level: 80, category: "Others" },
-  { name: "Agile/Scrum", level: 85, category: "Others" },
-  { name: "SEO", level: 75, category: "Others" },
-  { name: "OOP", level: 90, category: "Others" },
-  { name: "SOLID", level: 85, category: "Others" },
+  { name: "RESTful API", category: "Others" },
+  { name: "UI/UX", category: "Others" },
+  { name: "Agile/Scrum", category: "Others" },
+  { name: "SEO", category: "Others" },
+  { name: "OOP", category: "Others" },
+  { name: "SOLID", category: "Others" },
 ];
 
 export const experiences: Experience[] = [
@@ -124,7 +125,8 @@ export const experiences: Experience[] = [
         teamSize: 8,
         role: "Main Dev - Directly involved in development and maintenance staffs and billing related functionality.",
         period: "05/2025 - 08/2025",
-        category: "web"
+        category: "web",
+        skills: ["VueJS", "Tailwind CSS", "Laravel", "Ant Design", "Axios", "InertiaJS", "PHP", "MySQL", "RESTful API", "CRUD Operations", "Admin Dashboard", "Export/Import Data"]
       },
       {
         id: "t78",
@@ -135,7 +137,34 @@ export const experiences: Experience[] = [
         teamSize: 7,
         role: "Main Dev - Directly involved in management frontend projects and participate in developing project features.",
         period: "01/2025 - 06/2025",
-        category: "web"
+        category: "web",
+        skills: ["VueJS", "Tailwind CSS", "Pinia", "Ant Design", "Axios", "State Management", "Form Validation", "File Upload", "Real-time Updates", "Exam System", "Grading System", "User Management"]
+      },
+      {
+        id: "cyfb",
+        title: "CYFB",
+        description: "Build an internal corporate social network system similar to Facebook. With similar functions to Facebook, users can update their personal page, post, comment, react posts, upload stories, send messages and video calls. Can switch back and forth between 3 languages: Vietnamese, English, Korean. The admin will manage data on posts, comments, reactions, messages and video calls.",
+        technologies: ["NuxtJS", "Tailwind CSS", "NextJS", "Axios", "WebSocket", "Stringee"],
+        image: "/projects/cyfb.jpg",
+        teamSize: 6,
+        role: "Main Dev - Directly involved in development and maintainance user profile functionality with NuxtJS and develop admin management with NextJS.",
+        period: "10/2024 - 01/2025",
+        category: "web",
+        skills: ["NuxtJS", "NextJS", "Tailwind CSS", "Axios", "WebSocket", "Stringee", "Social Network", "Real-time Chat", "Video Calling", "Multi-language", "User Profiles", "Post Management", "Comment System", "Story Feature"]
+      },
+      {
+        id: "heartfield-cy",
+        title: "HEARTFIELD",
+        description: "Store system management similar to Shopee, the project includes system administration and store administration.",
+        technologies: ["TypeScript", "NextJS", "Tailwind CSS", "Zustand"],
+        image: "/projects/heartfield-cy.jpg",
+        teamSize: 8,
+        role: "Support feature maintenance and development.",
+        period: "07/2024 - 08/2024",
+        category: "web",
+        live: "https://shop.heartfield.co.kr/",
+        github: "https://admin.heartfield.co.kr/",
+        skills: ["TypeScript", "NextJS", "Tailwind CSS", "Zustand", "E-commerce", "Store Management", "Admin Dashboard", "Product Management", "Order Management", "Inventory System", "Payment Integration"]
       }
     ]
   },
@@ -174,12 +203,13 @@ export const projects: Project[] = [
   {
     id: "heartfield",
     title: "HEARTFIELD",
-    description: "Built an internal corporate social network system similar to Facebook. It includes functions for users to update their personal page, post, comment, react to posts, upload stories, send messages, and video calls. It supports switching between 3 languages: Vietnamese, English, and Korean.",
-    technologies: ["NuxtJS", "Tailwind CSS", "NextJS", "Axios", "WebSocket", "Stringee"],
+    description: "Store system management similar to Shopee, the project includes system administration and store administration.",
+    technologies: ["TypeScript", "NextJS", "Tailwind CSS", "Zustand"],
     image: "/projects/heartfield.jpg",
     live: "https://shop.heartfield.co.kr/",
-    teamSize: 6,
-    role: "Main Dev - Directly involved in the development and maintenance of user profile functionality with NuxtJS and the development of admin management with NextJS.",
+    admin: "https://admin.heartfield.co.kr/",
+    teamSize: 8,
+    role: "Support feature maintenance and development.",
     period: "07/2024 - 08/2024",
     category: "web"
   }
