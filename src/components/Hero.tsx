@@ -10,19 +10,22 @@ export default function Hero() {
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.3,
-        delayChildren: 0.2
+        staggerChildren: 0.2,
+        delayChildren: 0.1,
+        duration: 0.6,
+        ease: "easeOut" as const
       }
     }
   };
 
   const itemVariants = {
-    hidden: { y: 50, opacity: 0 },
+    hidden: { y: 30, opacity: 0, scale: 0.95 },
     visible: {
       y: 0,
       opacity: 1,
+      scale: 1,
       transition: {
-        duration: 0.8,
+        duration: 0.6,
         ease: "easeOut" as const
       }
     }
@@ -30,9 +33,9 @@ export default function Hero() {
 
   const floatingVariants = {
     animate: {
-      y: [-10, 10, -10],
+      y: [-8, 8, -8],
       transition: {
-        duration: 3,
+        duration: 2.5,
         repeat: Infinity,
         ease: "easeInOut" as const
       }
@@ -40,7 +43,7 @@ export default function Hero() {
   };
 
   return (
-    <section className="min-h-screen relative overflow-hidden animated-bg">
+    <section id="hero" className="min-h-screen relative overflow-hidden animated-bg">
       {/* Animated background elements */}
       <div className="absolute inset-0 overflow-hidden">
         <div className="absolute top-20 left-20 w-72 h-72 bg-purple-300 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-blob"></div>
@@ -100,21 +103,42 @@ export default function Hero() {
             <div className="flex flex-wrap justify-center gap-6">
               <a
                 href={`mailto:${personalInfo.email}`}
-                className="flex items-center gap-2 px-6 py-3 bg-white/10 backdrop-blur-sm rounded-full text-white hover:bg-white/20 transition-all duration-300 glow"
+                className="group relative flex items-center gap-2 px-6 py-3 bg-white/10 backdrop-blur-sm rounded-full text-white hover:bg-white/20 transition-all duration-300 glow"
               >
                 <Mail className="w-5 h-5" />
                 <span>{personalInfo.email}</span>
+                {/* Email Tooltip */}
+                <div className="absolute bottom-full mb-2 left-1/2 transform -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-all duration-300 pointer-events-none">
+                  <div className="bg-black/80 text-white text-xs px-3 py-1 rounded-lg whitespace-nowrap">
+                    Click to send email
+                  </div>
+                  <div className="absolute top-full left-1/2 transform -translate-x-1/2 w-0 h-0 border-t-4 border-t-black/80 border-l-2 border-l-transparent border-r-2 border-r-transparent"></div>
+                </div>
               </a>
               <a
                 href={`tel:${personalInfo.phone}`}
-                className="flex items-center gap-2 px-6 py-3 bg-white/10 backdrop-blur-sm rounded-full text-white hover:bg-white/20 transition-all duration-300 glow"
+                className="group relative flex items-center gap-2 px-6 py-3 bg-white/10 backdrop-blur-sm rounded-full text-white hover:bg-white/20 transition-all duration-300 glow"
               >
                 <Phone className="w-5 h-5" />
                 <span>{personalInfo.phone}</span>
+                {/* Phone Tooltip */}
+                <div className="absolute bottom-full mb-2 left-1/2 transform -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-all duration-300 pointer-events-none">
+                  <div className="bg-black/80 text-white text-xs px-3 py-1 rounded-lg whitespace-nowrap">
+                    Click to call
+                  </div>
+                  <div className="absolute top-full left-1/2 transform -translate-x-1/2 w-0 h-0 border-t-4 border-t-black/80 border-l-2 border-l-transparent border-r-2 border-r-transparent"></div>
+                </div>
               </a>
-              <div className="flex items-center gap-2 px-6 py-3 bg-white/10 backdrop-blur-sm rounded-full text-white">
+              <div className="group relative flex items-center gap-2 px-6 py-3 bg-white/10 backdrop-blur-sm rounded-full text-white">
                 <MapPin className="w-5 h-5" />
                 <span>{personalInfo.location}</span>
+                {/* Location Tooltip */}
+                <div className="absolute bottom-full mb-2 left-1/2 transform -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-all duration-300 pointer-events-none">
+                  <div className="bg-black/80 text-white text-xs px-3 py-1 rounded-lg whitespace-nowrap">
+                    Current location
+                  </div>
+                  <div className="absolute top-full left-1/2 transform -translate-x-1/2 w-0 h-0 border-t-4 border-t-black/80 border-l-2 border-l-transparent border-r-2 border-r-transparent"></div>
+                </div>
               </div>
             </div>
           </motion.div>
@@ -125,17 +149,31 @@ export default function Hero() {
               href={personalInfo.linkedin}
               target="_blank"
               rel="noopener noreferrer"
-              className="w-12 h-12 bg-white/10 backdrop-blur-sm rounded-full flex items-center justify-center text-white hover:bg-white/20 transition-all duration-300 glow"
+              className="group relative w-12 h-12 bg-white/10 backdrop-blur-sm rounded-full flex items-center justify-center text-white hover:bg-white/20 transition-all duration-300 glow"
             >
               <Linkedin className="w-6 h-6" />
+              {/* LinkedIn Tooltip */}
+              <div className="absolute bottom-full mb-2 left-1/2 transform -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-all duration-300 pointer-events-none">
+                <div className="bg-black/80 text-white text-xs px-3 py-1 rounded-lg whitespace-nowrap">
+                  View LinkedIn Profile
+                </div>
+                <div className="absolute top-full left-1/2 transform -translate-x-1/2 w-0 h-0 border-t-4 border-t-black/80 border-l-2 border-l-transparent border-r-2 border-r-transparent"></div>
+              </div>
             </a>
             <a
               href={personalInfo.github}
               target="_blank"
               rel="noopener noreferrer"
-              className="w-12 h-12 bg-white/10 backdrop-blur-sm rounded-full flex items-center justify-center text-white hover:bg-white/20 transition-all duration-300 glow"
+              className="group relative w-12 h-12 bg-white/10 backdrop-blur-sm rounded-full flex items-center justify-center text-white hover:bg-white/20 transition-all duration-300 glow"
             >
               <Github className="w-6 h-6" />
+              {/* GitHub Tooltip */}
+              <div className="absolute bottom-full mb-2 left-1/2 transform -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-all duration-300 pointer-events-none">
+                <div className="bg-black/80 text-white text-xs px-3 py-1 rounded-lg whitespace-nowrap">
+                  View GitHub Profile
+                </div>
+                <div className="absolute top-full left-1/2 transform -translate-x-1/2 w-0 h-0 border-t-4 border-t-black/80 border-l-2 border-l-transparent border-r-2 border-r-transparent"></div>
+              </div>
             </a>
           </motion.div>
 

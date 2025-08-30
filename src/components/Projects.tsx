@@ -24,18 +24,21 @@ export default function Projects() {
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.2
+        staggerChildren: 0.15,
+        duration: 0.5,
+        ease: "easeOut" as const
       }
     }
   };
 
   const projectVariants = {
-    hidden: { y: 50, opacity: 0 },
+    hidden: { y: 30, opacity: 0, scale: 0.95 },
     visible: {
       y: 0,
       opacity: 1,
+      scale: 1,
       transition: {
-        duration: 0.8,
+        duration: 0.6,
         ease: "easeOut" as const
       }
     }
@@ -185,26 +188,40 @@ export default function Projects() {
                   {/* Action Buttons */}
                   {(project.live || project.github || project.admin) && (
                     <div className={`flex gap-3 mt-auto pt-6 ${(project.live && project.github) || (project.live && project.admin) || (project.github && project.admin) ? '' : 'justify-center'}`}>
-                      {project.live && (
-                        <a
-                          href={project.live}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className={`flex items-center justify-center gap-2 px-4 py-3 bg-gradient-to-r from-blue-500 to-purple-500 text-white rounded-lg font-semibold hover:from-blue-600 hover:to-purple-600 transition-all duration-300 glow min-h-[44px] ${(project.live && project.github) || (project.live && project.admin) ? 'flex-1' : 'w-full'}`}
-                        >
-                          <ExternalLink className="w-4 h-4" />
-                          Live Demo
-                        </a>
-                      )}
+                                          {project.live && (
+                      <a
+                        href={project.live}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className={`group relative flex items-center justify-center gap-2 px-4 py-3 bg-gradient-to-r from-blue-500 to-purple-500 text-white rounded-lg font-semibold hover:from-blue-600 hover:to-purple-600 transition-all duration-300 glow min-h-[44px] ${(project.live && project.github) || (project.live && project.admin) ? 'flex-1' : 'w-full'}`}
+                      >
+                        <ExternalLink className="w-4 h-4" />
+                        Live Demo
+                        {/* Live Demo Tooltip */}
+                        <div className="absolute bottom-full mb-2 left-1/2 transform -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-all duration-300 pointer-events-none">
+                          <div className="bg-black/80 text-white text-xs px-3 py-1 rounded-lg whitespace-nowrap">
+                            View live project
+                          </div>
+                          <div className="absolute top-full left-1/2 transform -translate-x-1/2 w-0 h-0 border-t-4 border-t-black/80 border-l-2 border-l-transparent border-r-2 border-r-transparent"></div>
+                        </div>
+                      </a>
+                    )}
                       {project.github && (
                         <a
                           href={project.github}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className={`flex items-center justify-center gap-2 px-4 py-3 bg-white/10 backdrop-blur-sm text-white rounded-lg font-semibold hover:bg-white/20 transition-all duration-300 border border-white/20 min-h-[44px] ${(project.live && project.github) ? 'flex-1' : 'w-full'}`}
+                          className={`group relative flex items-center justify-center gap-2 px-4 py-3 bg-white/10 backdrop-blur-sm text-white rounded-lg font-semibold hover:bg-white/20 transition-all duration-300 border border-white/20 min-h-[44px] ${(project.live && project.github) ? 'flex-1' : 'w-full'}`}
                         >
                           <Github className="w-4 h-4" />
                           Source Code
+                          {/* Source Code Tooltip */}
+                          <div className="absolute bottom-full mb-2 left-1/2 transform -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-all duration-300 pointer-events-none">
+                            <div className="bg-black/80 text-white text-xs px-3 py-1 rounded-lg whitespace-nowrap">
+                              View source code
+                            </div>
+                            <div className="absolute top-full left-1/2 transform -translate-x-1/2 w-0 h-0 border-t-4 border-t-black/80 border-l-2 border-l-transparent border-r-2 border-r-transparent"></div>
+                          </div>
                         </a>
                       )}
                       {project.admin && (
@@ -212,10 +229,17 @@ export default function Projects() {
                           href={project.admin}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className={`flex items-center justify-center gap-2 px-4 py-3 bg-green-500/20 backdrop-blur-sm text-green-300 rounded-lg font-semibold hover:bg-green-500/30 transition-all duration-300 border border-green-500/30 min-h-[44px] ${(project.live && project.admin) ? 'flex-1' : 'w-full'}`}
+                          className={`group relative flex items-center justify-center gap-2 px-4 py-3 bg-green-500/20 backdrop-blur-sm text-green-300 rounded-lg font-semibold hover:bg-green-500/30 transition-all duration-300 border border-green-500/30 min-h-[44px] ${(project.live && project.admin) ? 'flex-1' : 'w-full'}`}
                         >
                           <Settings className="w-4 h-4" />
                           Admin Panel
+                          {/* Admin Panel Tooltip */}
+                          <div className="absolute bottom-full mb-2 left-1/2 transform -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-all duration-300 pointer-events-none">
+                            <div className="bg-black/80 text-white text-xs px-3 py-1 rounded-lg whitespace-nowrap">
+                              View admin panel
+                            </div>
+                            <div className="absolute top-full left-1/2 transform -translate-x-1/2 w-0 h-0 border-t-4 border-t-black/80 border-l-2 border-l-transparent border-r-2 border-r-transparent"></div>
+                          </div>
                         </a>
                       )}
                     </div>
@@ -226,28 +250,7 @@ export default function Projects() {
           ))}
         </motion.div>
 
-        {/* Call to Action */}
-        <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.5 }}
-          className="text-center mt-16"
-        >
-          <div className="inline-block p-8 rounded-2xl glass">
-            <h3 className="text-2xl font-bold text-white mb-4">
-              Interested in working together?
-            </h3>
-            <p className="text-white/80 mb-6">
-              Let&apos;s discuss your project and see how I can help bring your ideas to life.
-            </p>
-            <a
-              href="#contact"
-              className="inline-flex items-center gap-2 px-8 py-3 bg-gradient-to-r from-blue-500 to-purple-500 text-white rounded-lg font-semibold hover:from-blue-600 hover:to-purple-600 transition-all duration-300 glow"
-            >
-              Get In Touch
-            </a>
-          </div>
-        </motion.div>
+
       </div>
     </section>
   );

@@ -43,18 +43,21 @@ export default function Skills() {
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.1
+        staggerChildren: 0.08,
+        duration: 0.5,
+        ease: "easeOut" as const
       }
     }
   };
 
   const skillVariants = {
-    hidden: { y: 20, opacity: 0 },
+    hidden: { y: 15, opacity: 0, scale: 0.95 },
     visible: {
       y: 0,
       opacity: 1,
+      scale: 1,
       transition: {
-        duration: 0.6,
+        duration: 0.5,
         ease: "easeOut" as const
       }
     }

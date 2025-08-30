@@ -3,7 +3,7 @@
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { experiences } from '@/data/portfolio';
-import { Building, Code, Users, Calendar } from 'lucide-react';
+import { Building, Code, Users, Calendar, Phone } from 'lucide-react';
 
 export default function Experience() {
   const { ref, inView } = useInView({
@@ -16,18 +16,21 @@ export default function Experience() {
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.3
+        staggerChildren: 0.2,
+        duration: 0.6,
+        ease: "easeOut" as const
       }
     }
   };
 
   const itemVariants = {
-    hidden: { x: -100, opacity: 0 },
+    hidden: { x: -50, opacity: 0, scale: 0.95 },
     visible: {
       x: 0,
       opacity: 1,
+      scale: 1,
       transition: {
-        duration: 0.8,
+        duration: 0.6,
         ease: "easeOut" as const
       }
     }
@@ -187,6 +190,36 @@ export default function Experience() {
                                   ))}
                                 </div>
                               </div>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                    )}
+
+                    {/* Experience References */}
+                    {experience.references && experience.references.length > 0 && (
+                      <div className="mt-8">
+                        <h5 className="text-lg font-bold text-green-300 mb-4 flex items-center gap-2">
+                          <div className="w-2 h-2 bg-green-400 rounded-full"></div>
+                          References
+                        </h5>
+                        <div className="space-y-4">
+                          {experience.references.map((ref, index) => (
+                            <div key={index} className="p-4 bg-green-500/10 rounded-lg border border-green-500/20">
+                              <div className="flex items-center justify-between mb-2">
+                                <h6 className="text-lg font-semibold text-white">{ref.name}</h6>
+                                <span className="text-xs text-green-400 font-semibold bg-green-500/10 px-2 py-1 rounded-full">
+                                  #{index + 1}
+                                </span>
+                              </div>
+                              <div className="text-sm text-green-300 mb-2">{ref.position}</div>
+                              <a 
+                                href={`tel:${ref.phone}`}
+                                className="text-sm text-white/60 hover:text-white transition-colors flex items-center gap-2"
+                              >
+                                <Phone className="w-4 h-4" />
+                                {ref.phone}
+                              </a>
                             </div>
                           ))}
                         </div>
