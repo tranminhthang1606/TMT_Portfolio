@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { skills } from '@/data/portfolio';
 import { useState } from 'react';
+import { Code, Database, Layers, Settings, Palette, Globe } from 'lucide-react';
 
 export default function Skills() {
   const [selectedCategory, setSelectedCategory] = useState('All');
@@ -18,6 +19,25 @@ export default function Skills() {
     ? skills 
     : skills.filter(skill => skill.category === selectedCategory);
 
+  const getCategoryIcon = (category: string) => {
+    switch (category) {
+      case 'Programming Languages':
+        return <Code className="w-5 h-5" />;
+      case 'Frameworks':
+        return <Layers className="w-5 h-5" />;
+      case 'Libraries & Tools':
+        return <Palette className="w-5 h-5" />;
+      case 'DevOps & Tools':
+        return <Settings className="w-5 h-5" />;
+      case 'Database':
+        return <Database className="w-5 h-5" />;
+      case 'Others':
+        return <Globe className="w-5 h-5" />;
+      default:
+        return <Code className="w-5 h-5" />;
+    }
+  };
+
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -29,27 +49,15 @@ export default function Skills() {
   };
 
   const skillVariants = {
-    hidden: { x: -50, opacity: 0 },
+    hidden: { y: 20, opacity: 0 },
     visible: {
-      x: 0,
+      y: 0,
       opacity: 1,
       transition: {
         duration: 0.6,
         ease: "easeOut" as const
       }
     }
-  };
-
-  const progressVariants = {
-    hidden: { width: 0 },
-    visible: (level: number) => ({
-      width: `${level}%`,
-              transition: {
-          duration: 1.5,
-          ease: "easeOut" as const,
-          delay: 0.3
-        }
-    })
   };
 
   return (
@@ -80,12 +88,13 @@ export default function Skills() {
             <button
               key={category}
               onClick={() => setSelectedCategory(category)}
-              className={`px-6 py-3 rounded-full font-semibold transition-all duration-300 ${
+              className={`px-6 py-3 rounded-full font-semibold transition-all duration-300 flex items-center gap-2 ${
                 selectedCategory === category
                   ? 'bg-gradient-to-r from-purple-500 to-pink-500 text-white shadow-lg glow'
                   : 'bg-white/10 text-white/70 hover:bg-white/20 hover:text-white'
               }`}
             >
+              {category !== 'All' && getCategoryIcon(category)}
               {category}
             </button>
           ))}
@@ -97,46 +106,32 @@ export default function Skills() {
           variants={containerVariants}
           initial="hidden"
           animate={inView ? "visible" : "hidden"}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+          className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6"
         >
           {filteredSkills.map((skill) => (
             <motion.div
               key={skill.name}
               variants={skillVariants}
-              className="card-hover rounded-2xl p-6 glass"
+              className="group relative"
             >
-              <div className="flex items-center justify-between mb-4">
-                <h3 className="text-xl font-semibold text-white">
-                  {skill.name}
-                </h3>
-                <span className="text-sm font-medium text-purple-300">
-                  {skill.level}%
-                </span>
-              </div>
-              
-              <div className="w-full bg-white/20 rounded-full h-3 mb-4 overflow-hidden">
-                <motion.div
-                  custom={skill.level}
-                  variants={progressVariants}
-                  className="h-full skill-bar rounded-full relative"
-                >
-                  <div className="absolute inset-0 bg-gradient-to-r from-purple-400 to-pink-400 opacity-20 rounded-full"></div>
-                </motion.div>
-              </div>
-              
-              <div className="flex items-center justify-between text-sm text-white/60">
-                <span>{skill.category}</span>
-                <div className="flex space-x-1">
-                  {[...Array(5)].map((_, i) => (
-                    <div
-                      key={i}
-                      className={`w-2 h-2 rounded-full ${
-                        i < Math.floor(skill.level / 20) 
-                          ? 'bg-gradient-to-r from-purple-400 to-pink-400' 
-                          : 'bg-white/20'
-                      }`}
-                    />
-                  ))}
+              <div className="card-hover rounded-xl p-6 glass border border-white/10 hover:border-purple-500/50 transition-all duration-300 h-full">
+                <div className="text-center">
+                  {/* Skill Icon */}
+                  <div className="w-12 h-12 mx-auto mb-4 bg-gradient-to-r from-purple-500 to-pink-500 rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                    {getCategoryIcon(skill.category)}
+                  </div>
+                  
+                  {/* Skill Name */}
+                  <h3 className="text-sm font-semibold text-white group-hover:text-purple-300 transition-colors duration-300">
+                    {skill.name}
+                  </h3>
+                  
+                  {/* Category Badge */}
+                  <div className="mt-2">
+                    <span className="text-xs text-white/60 bg-white/10 px-2 py-1 rounded-full">
+                      {skill.category}
+                    </span>
+                  </div>
                 </div>
               </div>
             </motion.div>
@@ -150,24 +145,22 @@ export default function Skills() {
           transition={{ duration: 0.8, delay: 0.5 }}
           className="mt-16 text-center"
         >
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="text-center">
-              <div className="text-4xl font-bold gradient-text mb-2">
-                {skills.filter(s => s.level >= 90).length}
-              </div>
-              <div className="text-white/80">Expert Level</div>
-            </div>
-            <div className="text-center">
-              <div className="text-4xl font-bold gradient-text mb-2">
-                {skills.filter(s => s.level >= 80 && s.level < 90).length}
-              </div>
-              <div className="text-white/80">Advanced Level</div>
-            </div>
-            <div className="text-center">
-              <div className="text-4xl font-bold gradient-text mb-2">
-                {skills.filter(s => s.level >= 70 && s.level < 80).length}
-              </div>
-              <div className="text-white/80">Intermediate Level</div>
+          <div className="inline-block p-8 rounded-2xl glass">
+            <h3 className="text-2xl font-bold text-white mb-4">
+              Skills Overview
+            </h3>
+            <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
+              {categories.slice(1).map((category) => {
+                const categorySkills = skills.filter(s => s.category === category);
+                return (
+                  <div key={category} className="text-center">
+                    <div className="text-2xl font-bold gradient-text mb-1">
+                      {categorySkills.length}
+                    </div>
+                    <div className="text-white/80 text-sm">{category}</div>
+                  </div>
+                );
+              })}
             </div>
           </div>
         </motion.div>

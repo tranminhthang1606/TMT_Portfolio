@@ -1,6 +1,5 @@
 export interface Skill {
   name: string;
-  level: number;
   category: string;
   icon?: string;
 }
@@ -61,49 +60,49 @@ export const personalInfo = {
 
 export const skills: Skill[] = [
   // Programming Languages
-  { name: "JavaScript", level: 95, category: "Programming Languages" },
-  { name: "TypeScript", level: 90, category: "Programming Languages" },
-  { name: "PHP", level: 85, category: "Programming Languages" },
-  { name: "Java", level: 75, category: "Programming Languages" },
-  { name: "Dart", level: 80, category: "Programming Languages" },
+  { name: "JavaScript", category: "Programming Languages" },
+  { name: "TypeScript", category: "Programming Languages" },
+  { name: "PHP", category: "Programming Languages" },
+  { name: "Java", category: "Programming Languages" },
+  { name: "Dart", category: "Programming Languages" },
 
   // Frameworks
-  { name: "ReactJS", level: 95, category: "Frameworks" },
-  { name: "NextJS", level: 90, category: "Frameworks" },
-  { name: "VueJS", level: 85, category: "Frameworks" },
-  { name: "NuxtJS", level: 80, category: "Frameworks" },
-  { name: "Laravel", level: 85, category: "Frameworks" },
-  { name: "Flutter", level: 80, category: "Frameworks" },
-  { name: "React Native", level: 75, category: "Frameworks" },
-  { name: "NestJS", level: 70, category: "Frameworks" },
+  { name: "ReactJS", category: "Frameworks" },
+  { name: "NextJS", category: "Frameworks" },
+  { name: "VueJS", category: "Frameworks" },
+  { name: "NuxtJS", category: "Frameworks" },
+  { name: "Laravel", category: "Frameworks" },
+  { name: "Flutter", category: "Frameworks" },
+  { name: "React Native", category: "Frameworks" },
+  { name: "NestJS", category: "Frameworks" },
 
   // Libraries & Tools
-  { name: "Tailwind CSS", level: 90, category: "Libraries & Tools" },
-  { name: "Bootstrap 5", level: 85, category: "Libraries & Tools" },
-  { name: "Ant Design", level: 80, category: "Libraries & Tools" },
-  { name: "Zustand", level: 85, category: "Libraries & Tools" },
-  { name: "Pinia", level: 80, category: "Libraries & Tools" },
-  { name: "GSAP", level: 75, category: "Libraries & Tools" },
-  { name: "InertiaJS", level: 80, category: "Libraries & Tools" },
+  { name: "Tailwind CSS", category: "Libraries & Tools" },
+  { name: "Bootstrap 5", category: "Libraries & Tools" },
+  { name: "Ant Design", category: "Libraries & Tools" },
+  { name: "Zustand", category: "Libraries & Tools" },
+  { name: "Pinia", category: "Libraries & Tools" },
+  { name: "GSAP", category: "Libraries & Tools" },
+  { name: "InertiaJS", category: "Libraries & Tools" },
 
   // DevOps & Tools
-  { name: "Docker", level: 75, category: "DevOps & Tools" },
-  { name: "Git", level: 90, category: "DevOps & Tools" },
-  { name: "Ubuntu", level: 80, category: "DevOps & Tools" },
-  { name: "Jenkins", level: 70, category: "DevOps & Tools" },
-  { name: "GitLab CI/CD", level: 75, category: "DevOps & Tools" },
+  { name: "Docker", category: "DevOps & Tools" },
+  { name: "Git", category: "DevOps & Tools" },
+  { name: "Ubuntu", category: "DevOps & Tools" },
+  { name: "Jenkins", category: "DevOps & Tools" },
+  { name: "GitLab CI/CD", category: "DevOps & Tools" },
 
   // Database
-  { name: "MySQL", level: 85, category: "Database" },
-  { name: "Firebase", level: 80, category: "Database" },
+  { name: "MySQL", category: "Database" },
+  { name: "Firebase", category: "Database" },
 
   // Others
-  { name: "RESTful API", level: 90, category: "Others" },
-  { name: "UI/UX", level: 80, category: "Others" },
-  { name: "Agile/Scrum", level: 85, category: "Others" },
-  { name: "SEO", level: 75, category: "Others" },
-  { name: "OOP", level: 90, category: "Others" },
-  { name: "SOLID", level: 85, category: "Others" },
+  { name: "RESTful API", category: "Others" },
+  { name: "UI/UX", category: "Others" },
+  { name: "Agile/Scrum", category: "Others" },
+  { name: "SEO", category: "Others" },
+  { name: "OOP", category: "Others" },
+  { name: "SOLID", category: "Others" },
 ];
 
 export const experiences: Experience[] = [
