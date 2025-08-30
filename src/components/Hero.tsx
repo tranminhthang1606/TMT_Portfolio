@@ -1,6 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
+import Image from 'next/image';
 import { personalInfo } from '@/data/portfolio';
 import { Mail, Phone, MapPin, Linkedin, Github } from 'lucide-react';
 
@@ -65,11 +66,14 @@ export default function Hero() {
           >
             <div className="relative inline-block">
               <div className="w-48 h-48 mx-auto rounded-full overflow-hidden glow pulse-glow">
-                <div className="w-full h-full bg-gradient-to-br from-purple-400 via-pink-500 to-red-500 flex items-center justify-center">
-                  <span className="text-6xl font-bold text-white">
-                    {personalInfo.name.split(' ').map(n => n[0]).join('')}
-                  </span>
-                </div>
+                <Image 
+                  src="/avatar.jpeg" 
+                  alt={`${personalInfo.name} - Profile Photo`}
+                  width={192}
+                  height={192}
+                  className="w-full h-full object-cover"
+                  priority
+                />
               </div>
               <motion.div
                 variants={floatingVariants}
