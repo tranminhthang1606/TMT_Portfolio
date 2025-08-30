@@ -16,6 +16,7 @@ export interface Project {
   role?: string;
   period: string;
   category: 'web' | 'mobile' | 'fullstack';
+  skills?: string[];
 }
 
 export interface Experience {
@@ -123,7 +124,8 @@ export const experiences: Experience[] = [
         teamSize: 8,
         role: "Main Dev - Directly involved in development and maintenance staffs and billing related functionality.",
         period: "05/2025 - 08/2025",
-        category: "web"
+        category: "web",
+        skills: ["VueJS", "Tailwind CSS", "Laravel", "Ant Design", "Axios", "InertiaJS", "PHP", "MySQL", "RESTful API", "CRUD Operations", "Admin Dashboard", "Export/Import Data"]
       },
       {
         id: "t78",
@@ -134,7 +136,34 @@ export const experiences: Experience[] = [
         teamSize: 7,
         role: "Main Dev - Directly involved in management frontend projects and participate in developing project features.",
         period: "01/2025 - 06/2025",
-        category: "web"
+        category: "web",
+        skills: ["VueJS", "Tailwind CSS", "Pinia", "Ant Design", "Axios", "State Management", "Form Validation", "File Upload", "Real-time Updates", "Exam System", "Grading System", "User Management"]
+      },
+      {
+        id: "cyfb",
+        title: "CYFB",
+        description: "Build an internal corporate social network system similar to Facebook. With similar functions to Facebook, users can update their personal page, post, comment, react posts, upload stories, send messages and video calls. Can switch back and forth between 3 languages: Vietnamese, English, Korean. The admin will manage data on posts, comments, reactions, messages and video calls.",
+        technologies: ["NuxtJS", "Tailwind CSS", "NextJS", "Axios", "WebSocket", "Stringee"],
+        image: "/projects/cyfb.jpg",
+        teamSize: 6,
+        role: "Main Dev - Directly involved in development and maintainance user profile functionality with NuxtJS and develop admin management with NextJS.",
+        period: "10/2024 - 01/2025",
+        category: "web",
+        skills: ["NuxtJS", "NextJS", "Tailwind CSS", "Axios", "WebSocket", "Stringee", "Social Network", "Real-time Chat", "Video Calling", "Multi-language", "User Profiles", "Post Management", "Comment System", "Story Feature"]
+      },
+      {
+        id: "heartfield-cy",
+        title: "HEARTFIELD",
+        description: "Store system management similar to Shopee, the project includes system administration and store administration.",
+        technologies: ["TypeScript", "NextJS", "Tailwind CSS", "Zustand"],
+        image: "/projects/heartfield-cy.jpg",
+        teamSize: 8,
+        role: "Support feature maintenance and development.",
+        period: "07/2024 - 08/2024",
+        category: "web",
+        live: "https://shop.heartfield.co.kr/",
+        github: "https://admin.heartfield.co.kr/",
+        skills: ["TypeScript", "NextJS", "Tailwind CSS", "Zustand", "E-commerce", "Store Management", "Admin Dashboard", "Product Management", "Order Management", "Inventory System", "Payment Integration"]
       }
     ]
   },
