@@ -94,7 +94,7 @@ export default function Projects() {
               variants={projectVariants}
               className="group relative"
             >
-              <div className="card-hover rounded-2xl overflow-hidden glass h-full">
+              <div className="card-hover rounded-2xl overflow-hidden glass h-full flex flex-col">
                 {/* Project Image */}
                 <div className="relative h-64 overflow-hidden">
                   <div className="w-full h-full bg-gradient-to-br from-blue-500 via-purple-500 to-pink-500 flex items-center justify-center">
@@ -130,7 +130,7 @@ export default function Projects() {
                 </div>
 
                 {/* Project Content */}
-                <div className="p-6">
+                <div className="p-6 flex flex-col flex-1">
                   <h3 className="text-2xl font-bold text-white mb-3">
                     {project.title}
                   </h3>
@@ -183,13 +183,13 @@ export default function Projects() {
 
 
                   {/* Action Buttons */}
-                  <div className="flex gap-3 mt-6">
+                  <div className="flex gap-3 mt-auto pt-6">
                     {project.live && (
                       <a
                         href={project.live}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="flex-1 flex items-center justify-center gap-2 px-4 py-2 bg-gradient-to-r from-blue-500 to-purple-500 text-white rounded-lg font-semibold hover:from-blue-600 hover:to-purple-600 transition-all duration-300 glow"
+                        className="flex-1 flex items-center justify-center gap-2 px-4 py-3 bg-gradient-to-r from-blue-500 to-purple-500 text-white rounded-lg font-semibold hover:from-blue-600 hover:to-purple-600 transition-all duration-300 glow min-h-[44px]"
                       >
                         <ExternalLink className="w-4 h-4" />
                         Live Demo
@@ -200,7 +200,7 @@ export default function Projects() {
                         href={project.github}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="flex-1 flex items-center justify-center gap-2 px-4 py-2 bg-white/10 backdrop-blur-sm text-white rounded-lg font-semibold hover:bg-white/20 transition-all duration-300 border border-white/20"
+                        className="flex-1 flex items-center justify-center gap-2 px-4 py-3 bg-white/10 backdrop-blur-sm text-white rounded-lg font-semibold hover:bg-white/20 transition-all duration-300 border border-white/20 min-h-[44px]"
                       >
                         <Github className="w-4 h-4" />
                         Source Code
