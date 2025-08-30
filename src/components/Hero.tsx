@@ -2,7 +2,7 @@
 
 import { motion } from 'framer-motion';
 import { personalInfo } from '@/data/portfolio';
-import { Mail, Phone, MapPin, Linkedin, Github, Calendar } from 'lucide-react';
+import { Mail, Phone, MapPin, Linkedin, Github } from 'lucide-react';
 
 export default function Hero() {
   const containerVariants = {
@@ -23,7 +23,7 @@ export default function Hero() {
       opacity: 1,
       transition: {
         duration: 0.8,
-        ease: "easeOut"
+        ease: "easeOut" as const
       }
     }
   };
@@ -34,7 +34,7 @@ export default function Hero() {
       transition: {
         duration: 3,
         repeat: Infinity,
-        ease: "easeInOut"
+        ease: "easeInOut" as const
       }
     }
   };
