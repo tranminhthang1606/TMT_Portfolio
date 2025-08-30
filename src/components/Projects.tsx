@@ -4,7 +4,7 @@ import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { projects } from '@/data/portfolio';
 import { useState } from 'react';
-import { ExternalLink, Github, Users, Calendar, Code } from 'lucide-react';
+import { ExternalLink, Github, Users, Calendar, Code, Settings } from 'lucide-react';
 
 export default function Projects() {
   const [selectedCategory, setSelectedCategory] = useState('All');
@@ -183,30 +183,43 @@ export default function Projects() {
 
 
                   {/* Action Buttons */}
-                  <div className="flex gap-3 mt-auto pt-6">
-                    {project.live && (
-                      <a
-                        href={project.live}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="flex-1 flex items-center justify-center gap-2 px-4 py-3 bg-gradient-to-r from-blue-500 to-purple-500 text-white rounded-lg font-semibold hover:from-blue-600 hover:to-purple-600 transition-all duration-300 glow min-h-[44px]"
-                      >
-                        <ExternalLink className="w-4 h-4" />
-                        Live Demo
-                      </a>
-                    )}
-                    {project.github && (
-                      <a
-                        href={project.github}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="flex-1 flex items-center justify-center gap-2 px-4 py-3 bg-white/10 backdrop-blur-sm text-white rounded-lg font-semibold hover:bg-white/20 transition-all duration-300 border border-white/20 min-h-[44px]"
-                      >
-                        <Github className="w-4 h-4" />
-                        Source Code
-                      </a>
-                    )}
-                  </div>
+                  {(project.live || project.github || project.admin) && (
+                    <div className={`flex gap-3 mt-auto pt-6 ${(project.live && project.github) || (project.live && project.admin) || (project.github && project.admin) ? '' : 'justify-center'}`}>
+                      {project.live && (
+                        <a
+                          href={project.live}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className={`flex items-center justify-center gap-2 px-4 py-3 bg-gradient-to-r from-blue-500 to-purple-500 text-white rounded-lg font-semibold hover:from-blue-600 hover:to-purple-600 transition-all duration-300 glow min-h-[44px] ${(project.live && project.github) || (project.live && project.admin) ? 'flex-1' : 'w-full'}`}
+                        >
+                          <ExternalLink className="w-4 h-4" />
+                          Live Demo
+                        </a>
+                      )}
+                      {project.github && (
+                        <a
+                          href={project.github}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className={`flex items-center justify-center gap-2 px-4 py-3 bg-white/10 backdrop-blur-sm text-white rounded-lg font-semibold hover:bg-white/20 transition-all duration-300 border border-white/20 min-h-[44px] ${(project.live && project.github) ? 'flex-1' : 'w-full'}`}
+                        >
+                          <Github className="w-4 h-4" />
+                          Source Code
+                        </a>
+                      )}
+                      {project.admin && (
+                        <a
+                          href={project.admin}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className={`flex items-center justify-center gap-2 px-4 py-3 bg-green-500/20 backdrop-blur-sm text-green-300 rounded-lg font-semibold hover:bg-green-500/30 transition-all duration-300 border border-green-500/30 min-h-[44px] ${(project.live && project.admin) ? 'flex-1' : 'w-full'}`}
+                        >
+                          <Settings className="w-4 h-4" />
+                          Admin Panel
+                        </a>
+                      )}
+                    </div>
+                  )}
                 </div>
               </div>
             </motion.div>

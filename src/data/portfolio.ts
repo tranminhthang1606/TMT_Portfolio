@@ -12,6 +12,7 @@ export interface Project {
   image: string;
   github?: string;
   live?: string;
+  admin?: string;
   teamSize?: number;
   role?: string;
   period: string;
@@ -206,7 +207,7 @@ export const projects: Project[] = [
     technologies: ["TypeScript", "NextJS", "Tailwind CSS", "Zustand"],
     image: "/projects/heartfield.jpg",
     live: "https://shop.heartfield.co.kr/",
-    github: "https://admin.heartfield.co.kr/",
+    admin: "https://admin.heartfield.co.kr/",
     teamSize: 8,
     role: "Support feature maintenance and development.",
     period: "07/2024 - 08/2024",
