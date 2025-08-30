@@ -18,6 +18,11 @@ export interface Project {
   period: string;
   category: 'web' | 'mobile' | 'fullstack';
   skills?: string[];
+  references?: Array<{
+    name: string;
+    position: string;
+    phone: string;
+  }>;
 }
 
 export interface Experience {
@@ -28,6 +33,11 @@ export interface Experience {
   description: string;
   technologies: string[];
   projects?: Project[];
+  references?: Array<{
+    name: string;
+    position: string;
+    phone: string;
+  }>;
 }
 
 export interface Education {
@@ -115,6 +125,18 @@ export const experiences: Experience[] = [
     period: "05/2024 - 08/2025",
     description: "Develop software according to company plan. Edit, update, refactor and debug code. Identify and fix software errors (debug). Collaborate with UI/UX, BA/PM and BE teams in requirement analysis.",
     technologies: ["VueJS", "Tailwind CSS", "Laravel", "Ant Design", "Axios", "InertiaJS"],
+    references: [
+      {
+        name: "Nguyễn Cao Miên",
+        position: "Team Lead",
+        phone: "0867454162"
+      },
+      {
+        name: "Trần Bích Liên",
+        position: "Personnel Administration",
+        phone: "0382065699"
+      }
+    ],
     projects: [
       {
         id: "cy-crm",
@@ -231,15 +253,4 @@ export const certifications: Certification[] = [
   }
 ];
 
-export const references = [
-  {
-    name: "Nguyễn Cao Miên",
-    position: "Team Lead",
-    phone: "0867454162"
-  },
-  {
-    name: "Trần Bích Liên",
-    position: "Personnel Administration",
-    phone: "0382065699"
-  }
-];
+

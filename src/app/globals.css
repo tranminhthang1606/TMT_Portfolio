@@ -23,6 +23,34 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 80px;
+}
+
+/* Smooth scrolling for all elements */
+* {
+  scroll-behavior: smooth;
+}
+
+/* Optimize scroll performance */
+.smooth-scroll {
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Reduce motion for users who prefer it */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }
 
 /* Custom scrollbar */
@@ -134,16 +162,37 @@ body {
 
 /* Card hover effects */
 .card-hover {
-  transition: all 0.3s ease;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   background: rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(10px);
   border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 .card-hover:hover {
-  transform: translateY(-10px) scale(1.02);
+  transform: translateY(-8px) scale(1.01);
   box-shadow: 0 20px 40px rgba(102, 126, 234, 0.3);
   border-color: rgba(102, 126, 234, 0.5);
+}
+
+/* Smooth button transitions */
+button, a {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Smooth image transitions */
+img {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Improved glow effect */
+.glow {
+  box-shadow: 0 0 20px rgba(102, 126, 234, 0.3);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.glow:hover {
+  box-shadow: 0 0 30px rgba(102, 126, 234, 0.6);
+  transform: translateY(-2px);
 }
 
 /* Glass morphism */
