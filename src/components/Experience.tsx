@@ -3,7 +3,7 @@
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { experiences } from '@/data/portfolio';
-import { Building, Code } from 'lucide-react';
+import { Building, Code, Users, Calendar } from 'lucide-react';
 
 export default function Experience() {
   const { ref, inView } = useInView({
@@ -121,51 +121,72 @@ export default function Experience() {
                       </div>
                     )}
 
-                    {/* Projects */}
+                                        {/* Projects */}
                     {experience.projects && experience.projects.length > 0 && (
                       <div>
-                        <h5 className="text-sm font-semibold text-purple-300 mb-3">
+                        <h5 className="text-lg font-bold text-purple-300 mb-4 flex items-center gap-2">
+                          <div className="w-2 h-2 bg-purple-400 rounded-full"></div>
                           Key Projects
                         </h5>
-                        <div className="space-y-4">
-                          {experience.projects.map((project) => (
+                        <div className="space-y-6">
+                          {experience.projects.map((project, projectIndex) => (
                             <div
                               key={project.id}
-                              className="p-4 bg-white/5 rounded-lg border border-white/10"
+                              className="relative p-6 bg-gradient-to-br from-white/5 to-white/10 rounded-xl border border-white/20 hover:border-purple-500/50 transition-all duration-300 group"
                             >
-                              <div className="flex items-center justify-between mb-2">
-                                <h6 className="font-semibold text-white">
-                                  {project.title}
-                                </h6>
-                                <span className="text-xs text-white/60">
-                                  {project.period}
-                                </span>
+                              {/* Project Header */}
+                              <div className="flex items-start justify-between mb-4">
+                                <div className="flex-1">
+                                  <h6 className="text-lg font-bold text-white mb-1 group-hover:text-purple-300 transition-colors">
+                                    {project.title}
+                                  </h6>
+                                  <div className="flex items-center gap-4 text-sm text-white/60">
+                                    <span className="flex items-center gap-1">
+                                      <Calendar className="w-3 h-3" />
+                                      {project.period}
+                                    </span>
+                                    {project.teamSize && (
+                                      <span className="flex items-center gap-1">
+                                        <Users className="w-3 h-3" />
+                                        {project.teamSize} members
+                                      </span>
+                                    )}
+                                  </div>
+                                </div>
+                                <div className="text-xs text-purple-400 font-semibold bg-purple-500/10 px-2 py-1 rounded-full">
+                                  #{projectIndex + 1}
+                                </div>
                               </div>
-                              <p className="text-sm text-white/70 mb-2">
-                                {project.description}
-                              </p>
-                              <div className="flex items-center gap-4 text-xs text-white/60 mb-3">
-                                {project.teamSize && (
-                                  <span>Team: {project.teamSize} members</span>
-                                )}
-                                <span>Role: {project.role}</span>
+
+                              {/* Project Description */}
+                              <div className="mb-4">
+                                <p className="text-sm text-white/80 leading-relaxed">
+                                  {project.description}
+                                </p>
                               </div>
-                              
+
+                              {/* Project Role */}
+                              {project.role && (
+                                <div className="mb-4 p-3 bg-blue-500/10 rounded-lg border border-blue-500/20">
+                                  <div className="text-xs font-semibold text-blue-300 mb-1">Role</div>
+                                  <p className="text-sm text-white/80">{project.role}</p>
+                                </div>
+                              )}
+
                               {/* Project Technologies */}
-                              <div className="mb-3">
-                                <div className="flex flex-wrap gap-1">
+                              <div>
+                                <div className="text-xs font-semibold text-purple-300 mb-2">Technologies</div>
+                                <div className="flex flex-wrap gap-2">
                                   {project.technologies.map((tech) => (
                                     <span
                                       key={tech}
-                                      className="px-2 py-1 bg-purple-500/20 backdrop-blur-sm rounded text-xs text-purple-300 border border-purple-500/30"
+                                      className="px-3 py-1 bg-purple-500/20 backdrop-blur-sm rounded-full text-xs text-purple-300 border border-purple-500/30 hover:bg-purple-500/30 transition-colors"
                                     >
                                       {tech}
                                     </span>
                                   ))}
                                 </div>
                               </div>
-                              
-
                             </div>
                           ))}
                         </div>
